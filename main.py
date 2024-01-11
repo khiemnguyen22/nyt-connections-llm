@@ -24,6 +24,9 @@ def load_words(puzzle_content):
         words += group['words']
     return answers, words
 
+def llm_suggestion(words):
+    pass
+
 if __name__ == '__main__':
     date_str = input('Choose date (MM/DD/2024): ')
     date = datetime.datetime.strptime(date_str, '%m/%d/%Y')
@@ -43,6 +46,14 @@ if __name__ == '__main__':
     for i in range(4):
         print('| ' + ' | '.join(words[i*2: i*2 + 4]) + ' |')
 
-    print(f'\n----- Answer -----')
-    for group in answers.keys():
-        print(f'{group}: '+ ', '.join(answers[group]))
+    i = 0
+    while i < 4:
+        reveal = input('\n reveal 1 group (y/n)?: ')
+        if reveal == 'y':
+            print(f'\n----- Group {i + 1} -----')
+            group = list(answers.keys())[i]
+            print(f'{group}: '+ ', '.join(answers[group]))
+            i += 1
+        else:
+            continue
+        
