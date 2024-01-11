@@ -3,10 +3,11 @@ import datetime
 import json
 import random 
 import torch
+import os
 
 from transformers import pipeline
 
-
+           
 def date_to_puzzle(date):
     first_puzzle_id = 204
     first_date = datetime.datetime.strptime('01/01/2024','%m/%d/%Y')
@@ -78,7 +79,7 @@ if __name__ == '__main__':
 
     print('\n----- GenAI Suggestion -----')
     print(llm_suggestion(words))
-    
+
     i = 0
     while i < 4:
         reveal = input('\n reveal 1 group (y/n)?: ')
